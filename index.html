@@ -13,8 +13,29 @@
         <h1>Web-store</h1>
 		<img src="https://cdn-icons-png.flaticon.com/512/3595/3595455.png">
         <p>Это пример использования CSS для стилизации HTML контента.</p>
-		<button id="button">buy</button>
+		<button id="buy">buy</button>
     </div>
+	<form id="form">
+		<input type="text" placeholder="имя" id = "user_name">
+		<input type="text" placeholder="Email" id = "user_email">
+		<input type="text" placeholder="Phone number" id = "user_phonr">
+		<button id="order">оформить</button>
+	</form>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+	let tg = window.tellegram.webApp;
+	let buy = document.getElementById("buy");
+	let order = document.getElementById("order");
+
+	buy.addEventListener("click", () => {
+		document.getElementById("main").style.display = "none";
+		document.getElementById("form").style.display = "block";
+		document.getElementById("user_name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
+	}
+	);
+	order.addEventListener("click", () => {
+		tg.close();
+	});
+</script>
 </body>
 </html>
